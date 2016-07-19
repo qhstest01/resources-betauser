@@ -1,0 +1,16 @@
+jobs:
+  - name: dv-man-bu
+    type: manifest
+    steps:
+      - IN: dv-image-bu
+        pull: false
+      - IN: dv-opts-bu
+      - IN: dv-params-bu
+        applyTo:
+          - dv-image-bu
+      - TASK: managed
+      - IN: trigger-dv-man-bu
+    on_success:
+      - echo 'this is on_success step of dv-man of type manifest'
+    on_failure:
+      - echo 'this is on_failure step of dv-man of type manifest'
